@@ -9,7 +9,7 @@ async function toggleBigCard(i) {
     newBigOneType = responseAsJson.types[0].type.name
     showBigCard()
     fillCardHeader()
-    fillInfoContainer('txt', 0)
+    fillInfoContainer('txt')
 }
 
 async function getSpeciesAPI(i) {
@@ -52,8 +52,7 @@ function createTypes() {
     }
 }
 
-async function fillInfoContainer(wichOne, oldOrNew) {
-    resetButtonColor(oldOrNew)
+async function fillInfoContainer(wichOne) {
     let infoArea = document.getElementById('BC_Info_Box')
     infoArea.innerHTML = '';
 
@@ -66,28 +65,24 @@ async function fillInfoContainer(wichOne, oldOrNew) {
     if (wichOne == 'stats') {
         showStats(infoArea)
     }
+
+    resetButtonColor()
+
     giveButtonColor(wichOne)
 }
 
-function resetButtonColor(oldOrNew) {
-    let type;
-    // console.log('Alt oder neu? ', oldOrNew)
-    oldOrNew > 1 ? type = oldBigOneType : type = newBigOneType;
-    // console.log("2 Old Type: ", oldBigOneType, '(Bei nutzen der Sidebuttons)')
-    // console.log("0 New Type: ", newBigOneType, '(Bei öffnen der Karte)')
-    // console.log('Gewählter Typ: ', type)
+function resetButtonColor() {
     let buttons = document.querySelectorAll('.BC_Buttons');
+
     for (let i = 0; i <= 2; i++) {
-        buttons[i].classList.remove(type)
+        buttons[i].classList.remove(newBigOneType)
         buttons[i].classList.remove('ColorWhite')
     }
 }
 
 function giveButtonColor(wichOne) {
     let button = document.getElementById('BC_info_' + wichOne)
-    let type = newBigOneType;
-
-    button.classList.add(type)
+    button.classList.add(newBigOneType)
     button.classList.add('ColorWhite')
 }
 
@@ -226,8 +221,8 @@ function giveEventListener(leftSideButton, rightSideButton, i) {
 }
 
 async function nextPokemon(newi) {
-    oldBigOneType = newBigOneType
     resetButtonColor()
+    oldBigOneType = newBigOneType //Save currently type, to later easyly remove outdated type
     await toggleBigCard(newi)
     if (oldBigOneType != newBigOneType) {
         removeTypes(oldBigOneType)
@@ -235,7 +230,7 @@ async function nextPokemon(newi) {
 }
 
 function displaySideButtons(leftSideButton, rightSideButton, i) {
-    let width = document.getElementsByTagName('body').offsetWidth
+    let width = document.getElementsByTagName('body')[0].offsetWidth
     if (i == 1 || width < 600) {
         leftSideButton.style.display = 'none';
     } else {
@@ -279,5 +274,4 @@ function removeTypes(type) {
 
     let closeButton = document.getElementById('BC_CloseButton')
     closeButton.classList.remove(type)
-    resetButtonColor(oldBigOneType)
 }
