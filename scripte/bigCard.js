@@ -71,8 +71,11 @@ async function fillInfoContainer(wichOne, oldOrNew) {
 
 function resetButtonColor(oldOrNew) {
     let type;
+    // console.log('Alt oder neu? ', oldOrNew)
     oldOrNew > 1 ? type = oldBigOneType : type = newBigOneType;
-
+    // console.log("2 Old Type: ", oldBigOneType, '(Bei nutzen der Sidebuttons)')
+    // console.log("0 New Type: ", newBigOneType, '(Bei öffnen der Karte)')
+    // console.log('Gewählter Typ: ', type)
     let buttons = document.querySelectorAll('.BC_Buttons');
     for (let i = 0; i <= 2; i++) {
         buttons[i].classList.remove(type)
