@@ -3,13 +3,13 @@ let oldBigOneType;
 let newBigOneType;
 
 async function toggleBigCard(i) {
+    await makeSideButtons(i)
     await getFromAPI(i)
     await getSpeciesAPI(i)
     newBigOneType = responseAsJson.types[0].type.name
     showBigCard()
     fillCardHeader()
     fillInfoContainer('txt', 0)
-    makeSideButtons(i)
 }
 
 async function getSpeciesAPI(i) {
@@ -204,13 +204,13 @@ function getStatData() {
     return result
 }
 
-function makeSideButtons(i) {
+async function makeSideButtons(i) {
     let leftSideButton = document.getElementById('BC_sideButton_left')
     let rightSideButton = document.getElementById('BC_sideButton_rigth')
 
     giveEventListener(leftSideButton, rightSideButton, i)
     displaySideButtons(leftSideButton, rightSideButton, i)
-    fillSideButtons(i)
+    await fillSideButtons(i)
 }
 
 function giveEventListener(leftSideButton, rightSideButton, i) {
@@ -232,7 +232,7 @@ async function nextPokemon(newi) {
 }
 
 function displaySideButtons(leftSideButton, rightSideButton, i) {
-    let width = document.getElementById('BC_Whole_Section').offsetWidth
+    let width = document.getElementsByTagName('body').offsetWidth
     if (i == 1 || width < 600) {
         leftSideButton.style.display = 'none';
     } else {
