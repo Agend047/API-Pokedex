@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Pokedex</title>
+    <link rel="icon" type="image/x-icon" href="img/pokeball.png">
+    <script src="scripte/bigCard.js"></script>
+    <script src="scripte/main.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js "></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/big_card.css">
+    <link rel="stylesheet" href="fonts.css">
+
+</head>
+
+<body onload="loadSomeFromGen(1), loadListForSearch()">
+    <section id="loadingScreen">
+        <img id="loadingLogo" src="img/logo.png" alt="POKÉMON">
+        <svg width="250" height="250">
+            <circle r="100" cx="125" cy="125" class="Tracker_border Progress"></circle>
+            <circle r="100" cx="125" cy="125" class="Tracker_Mid Progress"></circle>
+            <text x="50%" y="50%" text-anchor="middle" stroke="#fec20c" stroke-width="1px" dy=".3em">Loading...</text>
+        </svg>
+    </section>
+
+    <header>
+        <div class="Head_flex_div">
+            <img id="PokedexLogo" src="img/Pokédex_logo.png" alt="POKEDEX">
+        </div>
+        <br>
+        <div class="Head_flex_div">
+            <h3>Load the generation you want to see, or search for a specific Pokémon!</h3>
+        </div>
+        </div>
+        <div class="Head_flex_div">
+            <input type="text" id="monsterInput" placeholder="Name or ID Number...">
+            <button id="searchButton" class="Nice_Button" onclick="findPokemon()">Search!</button>
+        </div>
+        <br>
+        <div class="loadGenButtons Head_flex_div">
+            <button onclick="loadSomeFromGen(1)">Generation 1</button>
+            <button onclick="loadSomeFromGen(2)">Generation 2</button>
+            <button onclick="loadSomeFromGen(3)">Generation 3</button>
+            <button onclick="loadSomeFromGen(4)">Generation 4</button>
+            <button onclick="loadSomeFromGen(5)">Generation 5</button>
+            <button onclick="loadSomeFromGen(6)">Generation 6</button>
+            <button onclick="loadSomeFromGen(7)">Generation 7</button>
+            <button onclick="loadSomeFromGen(8)">Generation 8</button>
+            <button onclick="loadSomeFromGen(9)">Generation 9</button>
+        </div>
+    </header>
+
+
+    <div id="shaderDiv" class="DisplayNone" onclick="closeBigCard()"></div>
+
+    <section id="BC_Whole_Section" class="DisplayNone">
+        <span class="BC_sideButton_span">
+            <button class="BC_sideButton" id="BC_sideButton_left">
+                <img class="BC_sideButton_image" id="BC_SB_left_image" src="" alt="">
+            </button>
+        </span>
+        <span id="Big_Card_Section">
+            <div id="Big_Card_Header" class="">
+                <div class="BC_CloseDiv">
+                    <button id="BC_CloseButton" onclick="closeBigCard()">X</button>
+                </div>
+                <div id="BC_PokeNameNumber">
+                    <div>
+                        <h3 id="BC_PokeName">TestName</h3>
+                    </div>
+                    <div id="BC_Number">#123</div>
+                </div>
+                <div class="BC_Over_line">
+                    <div class="BC_Part_Line"></div>
+                </div>
+                <div id="BC_PokeTypes"></div>
+                <div class="ImgDiv">
+                    <img src="img/pokeBackground.png" alt="" class="BC_Background_ball">
+                    <img src="" alt="" id="BC_Poke_Img">
+                </div>
+            </div>
+            <div id="Big_Card_Lower">
+                <div id="BC_lower_Button_Area">
+                    <button id="BC_info_txt" onclick="fillInfoContainer('txt', 2)" class="BC_Buttons">Info</button>
+                    <button id="BC_info_over" onclick="fillInfoContainer('over', 2)"
+                        class="BC_Buttons">Overview</button>
+                    <button id="BC_info_stats" onclick="fillInfoContainer('stats', 2)" class="BC_Buttons">Stats</button>
+                </div>
+                <div id="BC_Info_Box">
+
+                </div>
+            </div>
+        </span>
+        <span class="BC_sideButton_span">
+            <button class="BC_sideButton" id="BC_sideButton_rigth">
+                <img class="BC_sideButton_image" id="BC_SB_right_image" src="" alt="">
+            </button>
+        </span>
+    </section>
+
+    <main id="Pokedex"></main>
+    <div id="Lower_Load_Button">
+        <button id="load_few_button" class="Nice_Button" onclick="loadMoreMonster()">Load in 30 more Pokémon!</button>
+        <button id="load_fullGen_button" class="Nice_Button" onclick="loadRestOfGen()">Load full Generation!</button>
+    </div>
+    <script src="scripte/loading.js"></script>
+</body>
+
+</html>
