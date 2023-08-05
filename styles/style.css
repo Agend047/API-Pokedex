@@ -3,6 +3,14 @@ body {
     margin: 0;
 }
 
+header {
+    background-color: rgb(41, 97, 204)
+}
+
+header h3 {
+    color: #ffce31;
+}
+
 /*Loading Screen 
 */
 
@@ -48,7 +56,7 @@ body {
 
 #monsterInput {
     padding: 8px;
-    border-radius: 8px;
+    border-radius: 41px;
     margin-right: 16px;
 }
 
@@ -57,15 +65,16 @@ body {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
+    font-weight: bolder;
+    color: #15168b;
+    background-color: #ffce31;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    margin: 8px 0 8px 0;
 }
 
 .Nice_Button:hover {
@@ -123,34 +132,6 @@ body {
     align-items: center;
     background-color: #15168b;
     height: auto;
-}
-
-.loadGenButtons button {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: bolder;
-    color: #15168b;
-    background-color: #ffce31;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    margin: 8px 0 8px 0;
-}
-
-.loadGenButtons button:hover {
-    background-color: #15168b;
-    box-shadow: 0px 15px 20px #ffce31;
-    color: #ffce31;
-    transform: translateY(-7px);
-}
-
-.loadGenButtons button:active {
-    transform: translateY(-1px);
 }
 
 #Pokedex {
